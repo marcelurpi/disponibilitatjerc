@@ -1,10 +1,14 @@
 
+console.log("script loaded");
+
 var file = document.getElementById("file");
 var ranking = document.getElementById("ranking");
 
 file.onchange = _ => {
+    console.log("file changed");
     const reader = new FileReader();
     reader.addEventListener("load", _ => {
+        console.log("file read");
         let disponibilitat = new Object();
         let lines = reader.result.replace("\r","").split("\n");
         let days = [];
@@ -36,6 +40,7 @@ file.onchange = _ => {
                 }
             }
         }
+        console.log("map created");
         array = Object.keys(disponibilitat).map(key => [key, disponibilitat[key]]);
         array.sort((a, b) => b[1].length - a[1].length);
         for (let dispon of array) {
@@ -57,7 +62,7 @@ file.onchange = _ => {
             }
             ranking.appendChild(row);
         }
-        console.log(disponibilitat);
+        console.log("result generated");
     });
     reader.readAsText(file.files[0]);
 };
