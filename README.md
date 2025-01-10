@@ -1,1 +1,1 @@
-"# disponibilitatjerc" 
+# disponibilitatjerc
